@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "items": {
+    "host": "localhost",
+    "port": 3306,
+    "url": "mysql://webapp:qwe123asd@localhost:3306/travellersdonations",
+    "database": "travellersdonations",
+    "password": "qwe123asd",
+    "name": "items",
+    "user": "webapp",
+    "connector": "mysql"
+  }
+}
