@@ -12,13 +12,21 @@
     },
     "categoryCode": {
       "type": "number",
+      "required": false
+    },
+    "userName": {
+      "type": "string",
       "required": true
     },
-    "name": {
+    "donationName": {
       "type": "string",
       "required": true
     },
     "description": {
+      "type": "string",
+      "required": true
+    },
+    "locationInfo": {
       "type": "string",
       "required": true
     },
@@ -28,23 +36,26 @@
     },
     "location": {
       "type": "geopoint",
-      "required": true
+      "required": false
     },
     "creationDate": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "saleDate": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "ownerId": {
       "type": "number",
-      "required": true
+      "required": false
     },
     "buyerId": {
       "type": "number",
-      "required": true
+      "required": false
+    },
+    "donationImage1": {
+      "type":"buffer"
     }
 
   },

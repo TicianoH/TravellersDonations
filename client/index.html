@@ -1,183 +1,144 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <title>Place Autocomplete</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Material Design Lite</title>
+  <title>Donate your traveller stuff!</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGyddcahVezWHIm7qcfIu_H8emXH-U-zM&libraries=places&callback=initMap"></script>
+  <script src="js/init.js"></script>
+  <script src="js/functions.js"></script>
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
-
-    <link rel="shortcut icon" href="images/favicon.png">
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        #view-source {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
-    }
-    </style>
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: content-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-    </style>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 
 <body>
-
-    <!-- Colored FAB button -->
-
-
-
-    <div class="pac-card" id="pac-card">
-
-        <div id="title">
-            Search location
+ 
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/bg3.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand text-center">
+            <h1>Give & Take.</h1>
+            <h3 class="title text-center"> That's what's all about.</h3>
+          </div>
         </div>
-        <div id="type-selector" class="pac-controls">
-            <input type="radio" name="type" id="changetype-all" checked="checked">
-            <label for="changetype-all">All</label>
-
-            <input type="radio" name="type" id="changetype-establishment">
-            <label for="changetype-establishment">Establishments</label>
-
-            <input type="radio" name="type" id="changetype-address">
-            <label for="changetype-address">Addresses</label>
-
-            <input type="radio" name="type" id="changetype-geocode">
-            <label for="changetype-geocode">Geocodes</label>
-        </div>
-        <div id="strict-bounds-selector" class="pac-controls">
-            <input type="checkbox" id="use-strict-bounds" value="">
-            <label for="use-strict-bounds">Strict Bounds</label>
-        </div>
-        <div id="pac-container">
-            <input id="pac-input" type="text" placeholder="Enter a location">
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+        <h2 class="title">Find that you are looking for</h2>
+
+        <div class="mui-container">
+          <button id="newDonation" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="slideForm()"
+            style="align-content:stretch">
+            <i class="material-icons">add</i>
+          </button>
 
 
-    <button id="newDonation" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-        <i class="material-icons">add</i>
-    </button>
-    <div id="map"></div>
-    <div id="infowindow-content">
-        <img src="" width="16" height="16" id="place-icon">
-        <span id="place-name" class="title"></span><br>
-        <span id="place-address"></span>
+          <div id="searchDiv" class="demo-card-wide mdl-card mdl-shadow--2dp" style="visibility: hidden ; display:none">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">New Donation</h2>
+            </div>
+
+            <!--  Donation Form -->
+            <form id="newDonationForm" action="/api/donationItems" onsubmit="submitNewDonation()" method="POST" autocomplete="on" enctype="application/x-www-form-urlencoded">
+
+              <div class="mdl-card__supporting-text">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input name="userName" id="userName" class="mdl-textfield__input" type="file" accept="image/*" required autocomplete>
+                  <label class="mdl-textfield__label" for="donationUser">Your Name</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input name="email" id="email" class="mdl-textfield__input" type="email" required autocomplete>
+                  <label class="mdl-textfield__label" for="donationEmail">Your Email</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input name="donationName" id="donationName" class="mdl-textfield__input" type="text" required>
+                  <label class="mdl-textfield__label" for="donationName">Name of the object to donate</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+                  <input name="picture1" class="mdl-textfield__input" placeholder="Upload picture" type="image" id="uploadFile" readonly/>
+                  <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                    <i class="material-icons">attach_file</i><input type="file" id="uploadBtn">
+                  </div>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <textarea name="description" id="description" class="mdl-textfield__input" type="text" rows="6" cols="45" maxlength="800" minlength="50" required></textarea>
+                  <label class="mdl-textfield__label" for="donationDesc">Description</label>
+                </div>
+  
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea name="locationInfo" class="mdl-textfield__input" type="text" id="placeInfo" rows="4" maxlength="800" minlength="50" required></textarea>
+                    <label class="mdl-textfield__label" for="username">Include details about the place and the person holding the donation</label>
+                  </div>
+                
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input name="address" id="pac-input" class="mdl-textfield__input" type="street-address" required>
+                    <label class="mdl-textfield__label" for="donationDesc">Exact Address wher donation will be available for pickup</label>
+                  </div>
+
+                    <div class="mdl-card__actions mdl-card--border">
+                      <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" name="login">Add Donation</button>
+                  </div>
+
+            </form>
+
+
+          </div>
+         
+        </div>
+        <!-- Donation Form -->
+
+        <div class="container-fluid">
+          <div id="map"></div>
+        </div>
+      </div>
     </div>
-    
+  </div>
+  </div>
 
-    <script src="js/init.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWga92Niym1DmhU19heSRdkmxBe8jYoug&libraries=places&callback=initMap"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    
+  <footer class="footer footer-default">
+    <div class="container">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com/">
+              Creative Tim
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, made with <i class="material-icons">favorite</i> by
+        <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for a better web.
+      </div>
+    </div>
+  </footer>
+ 
 </body>
 
 </html>
