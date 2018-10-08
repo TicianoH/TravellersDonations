@@ -15,6 +15,7 @@
     "cors": "^2.5.2",
     "helmet": "^3.10.0",
     "image-type": "^3.0.0",
+    "jquery-file-upload-middleware": "^0.1.8",
     "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.2.0",
