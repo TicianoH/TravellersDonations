@@ -108,6 +108,4 @@
             // Sets a listener on a radio button to change the filter type on Places
             // Autocomplete.
            
-            //TODO: MOVER A OTRO INIT
-            //$('#newDonationButton').click(function(){ submitNewDonation(); return false; });
         }

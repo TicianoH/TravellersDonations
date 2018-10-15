@@ -54,8 +54,8 @@
       "type": "number",
       "required": false
     },
-    "picture1": {
-      "type":"buffer"
+    "files": {
+      "type":"string"
     }
 
   },
