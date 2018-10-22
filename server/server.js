@@ -35,7 +35,17 @@ upload.configure({
             width: 80,
             height: 80
         }
-    }
+    },
+    imageTypes: /\.(gif|jpe?g|png|bmp)$/i,
+    accessControl: {
+        // allowOrigin: '*',
+        allowMethods: 'OPTIONS, HEAD, GET, POST, PUT, DELETE'
+    },
+    maxPostSize: '600,228',
+    minFileSize: '100',
+    maxFileSize: '524,228', // 512 kb
+    acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp)$/i,
+    disableImageResize: "false",
 });
 
 

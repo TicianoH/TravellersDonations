@@ -21,7 +21,8 @@
     "loopback-component-explorer": "^6.2.0",
     "loopback-connector-mysql": "^5.3.1",
     "serve-favicon": "^2.0.1",
-    "strong-error-handler": "^3.0.0"
+    "strong-error-handler": "^3.0.0",
+    "blueimp-file-upload-node": "2.1.0"
   },
   "devDependencies": {
     "eslint": "^3.17.1",
@@ -32,5 +33,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "TravellersDonations"
+  "description": "Travel light - Donate your stuff"
 }
