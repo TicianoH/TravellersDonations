@@ -8,31 +8,34 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" href="css/jquery.fileupload.css">
-<link rel="stylesheet" href="css/jquery.fileupload-ui.css">
+  <link rel="stylesheet" href="assets/css/jquery.fileupload.css">
+  <link rel="stylesheet" href="assets/css/jquery.fileupload-ui.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-  
-  <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 
-<!-- CSS adjustments for browsers with JavaScript disabled -->
-<noscript><link rel="stylesheet" href="assets/css/jquery.fileupload-noscript.css"></noscript>
-<noscript><link rel="stylesheet" href="assets/css/jquery.fileupload-ui-noscript.css"></noscript>
+  <link rel="stylesheet" href="assets/css/blueimp-gallery.min.css">
+  <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+
+  <!-- CSS adjustments for browsers with JavaScript disabled -->
+  <noscript>
+    <link rel="stylesheet" href="assets/css/jquery.fileupload-noscript.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="assets/css/jquery.fileupload-ui-noscript.css"></noscript>
 </head>
 
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGyddcahVezWHIm7qcfIu_H8emXH-U-zM&libraries=places&callback=initMap"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"></script> -->
   <script src="assets/js/init.js"></script>
   <script src="assets/js/functions.js"></script>
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -40,10 +43,10 @@
   <script src="assets/js/jquery.iframe-transport.js"></script>
   <script src="assets/js/jquery.fileupload.js"></script>
   <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
-<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+  <script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+  <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+  <script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+  <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
   <!-- The File Upload processing plugin -->
   <script src="assets/js/jquery.fileupload-process.js"></script>
   <!-- The File Upload image preview & resize plugin -->
@@ -81,33 +84,35 @@
 
             <!--  Donation Form -->
             <form id="newDonationForm" action="/api/donationItems" method="POST" autocomplete="on" enctype="application/x-www-form-urlencoded"></form>
-           
 
-              <div class="mdl-card__supporting-text">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input name="userName" id="userName" class="mdl-textfield__input" type="text" required autocomplete="on" form="newDonationForm">
-                  <label class="mdl-textfield__label" for="donationUser">Your Name</label>
-                </div>
 
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input name="email" id="email" class="mdl-textfield__input" type="email" required autocomplete="on" form="newDonationForm">
-                  <label class="mdl-textfield__label" for="donationEmail">Your Email</label>
-                </div>
-
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input name="donationName" id="donationName" class="mdl-textfield__input" type="text" required form="newDonationForm">
-                  <label class="mdl-textfield__label" for="donationName">Name of the object to donate</label>
-                </div>
+            <div class="mdl-card__supporting-text">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input name="userName" id="userName" class="mdl-textfield__input" type="text" required autocomplete="on"
+                  form="newDonationForm">
+                <label class="mdl-textfield__label" for="donationUser">Your Name</label>
+              </div>
 
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <textarea name="description" id="description" class="mdl-textfield__input"  rows="6" cols="45"
-                  maxlength="800" minlength="50" required form="newDonationForm"></textarea>
+                <input name="email" id="email" class="mdl-textfield__input" type="email" required autocomplete="on"
+                  form="newDonationForm">
+                <label class="mdl-textfield__label" for="donationEmail">Your Email</label>
+              </div>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input name="donationName" id="donationName" class="mdl-textfield__input" type="text" required form="newDonationForm">
+                <label class="mdl-textfield__label" for="donationName">Name of the object to donate</label>
+              </div>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <textarea name="description" id="description" class="mdl-textfield__input" rows="6" cols="45" maxlength="800"
+                  minlength="50" required form="newDonationForm"></textarea>
                 <label class="mdl-textfield__label" for="donationDesc">Description</label>
               </div>
 
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <textarea name="locationInfo" class="mdl-textfield__input" id="placeInfo" rows="4"
-                  maxlength="800" minlength="50" required form="newDonationForm"></textarea>
+                <textarea name="locationInfo" class="mdl-textfield__input" id="placeInfo" rows="4" maxlength="800"
+                  minlength="50" required form="newDonationForm"></textarea>
                 <label class="mdl-textfield__label" for="username">Include details about the place and the person
                   holding the donation</label>
               </div>
@@ -117,42 +122,54 @@
                 <label class="mdl-textfield__label" for="donationDesc">Exact Address wher donation will be available
                   for pickup</label>
               </div>
-
+              <input type="text" id="locationInput" name="location" hidden required form="newDonationForm">
               <input type="text" name="files" id="inputFiles" required form="newDonationForm" hidden>
-           
-                  <form id="upload" method="post" action="/upload" enctype="multipart/form-data">
-                    <div id="drop">
-                        Drop Here 
-                        <span class="btn btn-success fileinput-button">
-                            <i class="glyphicon glyphicon-plus"></i>
-                            <span>Add files...</span>
-                        <input type="file" name="upl" multiple required data-method="POST" data-action="/upload" />
-                    </div>
-        
-                    <ul class="mdl-list">
-                        <!-- The file uploads will be shown here -->
-                    </ul>
-        
-                </form>
+
+              <form id="upload" method="post" action="/upload" enctype="multipart/form-data">
+                <div id="drop">
+                  Drop Here
+                  <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="upl" multiple required data-method="POST" data-action="/upload" />
+                </div>
+
+                <ul class="mdl-list">
+                  <!-- The file uploads will be shown here -->
+                </ul>
+
+              </form>
 
 
-              <button id="submitForm" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="submitNewDonation()" form="newDonationForm">Add
-                  Donation</button>
-             
-                    <!-- Donation Form -->
+              <button id="submitForm" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-snackbar__action" onclick="submitNewDonation()"
+                form="newDonationForm">Add
+                Donation</button>
 
+
+              <!-- Donation Form -->
+
+
+            </div>
 
           </div>
 
-        </div>
-  
+          <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
 
-        <div class="container-fluid">
-          <div id="map"></div>
+
+          <div class="container-fluid">
+            <div id="map"></div>
+          </div>
+          <div id="infowindow-content">
+            <img src="" width="16" height="16" id="place-icon">
+            <span id="place-name" class="title"></span><br>
+            <span id="place-address"></span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <footer class="footer footer-default">
@@ -161,7 +178,7 @@
         <ul>
           <li>
             <a href="https://www.creative-tim.com/">
-              Creative Tim
+              Julian Mojico
             </a>
           </li>
         </ul>

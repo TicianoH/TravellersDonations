@@ -36,7 +36,7 @@
     },
     "location": {
       "type": "geopoint",
-      "required": false
+      "required": true
     },
     "creationDate": {
       "type": "date",

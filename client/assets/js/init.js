@@ -2,12 +2,23 @@
         // parameter when you first load the API. For example:
         // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+
+
         function initMap() {
+            var geocoder = new google.maps.Geocoder;
             var map = new google.maps.Map(document.getElementById('map'), {
                 // center: { lat: -33.8688, lng: 151.2195 },
-                zoom: 10
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
+            var marker = new google.maps.Marker({
+                map: map,
+                animation: google.maps.Animation.DROP,
+                anchorPoint: new google.maps.Point(0, -29),
+            });
+
+            var locationInput = document.getElementById("locationInput");
             infoWindow = new google.maps.InfoWindow;
 
             // Try HTML5 geolocation.
@@ -27,7 +38,14 @@
                 });
             } else {
                 // Browser doesn't support Geolocation
+                pos = {lat:-34.6037389 , lng:-58.3837591 }
+                //use default position since location is not available
+                infoWindow.setPosition(pos);
+                infoWindow.open(map);
+                map.setCenter(pos);
+
                 handleLocationError(false, infoWindow, map.getCenter());
+                
             }
 
 
@@ -39,10 +57,9 @@
                 infoWindow.open(map);
             }
 
-            var card = document.getElementById('pac-card');
+            
             var input = document.getElementById('pac-input');
-            var types = document.getElementById('type-selector');
-            var strictBounds = document.getElementById('strict-bounds-selector');
+            //var strictBounds = document.getElementById('strict-bounds-selector');
 
             // map.controls[google.maps.ControlPosition.TOP_CENTER].push(card);
             // map.controls[google.maps.ControlPosition.TOP_LEFT].push(newDonation);
@@ -55,18 +72,15 @@
             autocomplete.bindTo('bounds', map);
 
             // Set the data fields to return when the user selects a place.
-            autocomplete.setFields(
-                ['address_components', 'geometry', 'icon', 'name']);
+            autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
 
             var infowindow = new google.maps.InfoWindow();
+            
             var infowindowContent = document.getElementById('infowindow-content');
             infowindow.setContent(infowindowContent);
-            var marker = new google.maps.Marker({
-                map: map,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
 
             autocomplete.addListener('place_changed', function () {
+    
                 infowindow.close();
                 marker.setVisible(false);
                 var place = autocomplete.getPlace();
@@ -77,16 +91,19 @@
                     return;
                 }
 
+                let elmnt = document.getElementById("map");
+                elmnt.scrollIntoView();
+
                 // If the place has a geometry, then present it on a map.
                 if (place.geometry.viewport) {
                     map.fitBounds(place.geometry.viewport);
                 } else {
                     map.setCenter(place.geometry.location);
-                    map.setZoom(17);  // Why 17? Because it looks good.
+                    map.setZoom(17); 
                 }
-                marker.setPosition(place.geometry.location);
-                marker.setVisible(true);
-
+                 marker.setPosition(place.geometry.location);
+                 marker.setVisible(true);
+                
                 var address = '';
                 if (place.address_components) {
                     address = [
@@ -101,11 +118,94 @@
                 infowindowContent.children['place-address'].textContent = address;
                 infowindow.open(map, marker);
 
+                locationInput.value =  JSON.stringify(place.geometry.location);
                 //agregar confirmacion de lugar   
 
             });
 
-            // Sets a listener on a radio button to change the filter type on Places
-            // Autocomplete.
+            addYourLocationButton(map,marker);
            
-        }
+            function addYourLocationButton(map) 
+            {
+               
+                var controlDiv = document.createElement('div');            
+                var firstChild = document.createElement('button');
+                firstChild.style.backgroundColor = '#fff';
+                firstChild.style.border = 'none';
+                firstChild.style.outline = 'none';
+                firstChild.style.width = '28px';
+                firstChild.style.height = '28px';
+                firstChild.style.borderRadius = '2px';
+                firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+                firstChild.style.cursor = 'pointer';
+                firstChild.style.marginRight = '10px';
+                firstChild.style.padding = '0px';
+                firstChild.title = 'Your Location';
+                controlDiv.appendChild(firstChild);
+                
+                var secondChild = document.createElement('div');
+                secondChild.style.margin = '5px';
+                secondChild.style.width = '18px';
+                secondChild.style.height = '18px';
+                secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
+                secondChild.style.backgroundSize = '180px 18px';
+                secondChild.style.backgroundPosition = '0px 0px';
+                secondChild.style.backgroundRepeat = 'no-repeat';
+                secondChild.id = 'you_location_img';
+                firstChild.appendChild(secondChild);
+                
+                google.maps.event.addListener(map, 'dragend', function() {
+                    $('#you_location_img').css('background-position', '0px 0px');
+                });
+            
+                firstChild.addEventListener('click', function() {
+                    var imgX = '0';
+                    var animationInterval = setInterval(function(){
+                        if(imgX == '-18') imgX = '0';
+                        else imgX = '-18';
+                        $('#you_location_img').css('background-position', imgX+'px 0px');
+                    }, 500);
+                    if(navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            //convertir geo a direccion, y reemplazar en address input
+                            infowindow.close();
+                            //marker.setPosition(latlng);
+                            map.setCenter(latlng);
+                            clearInterval(animationInterval);
+                            $('#you_location_img').css('background-position', '-144px 0px');
+                            
+
+                        //decode input coordinates into a text address
+                        geocoder.geocode({'location': latlng}, function(results, status) {
+                            if (status === 'OK') {
+                              if (results[0]) {
+
+                                //fullfill address input when location button is clicked
+                                input.value = results[0].formatted_address;
+                                locationInput.value =  JSON.stringify(latlng);
+                                input.scrollIntoView();
+
+                              } else {
+                                window.alert('No results found');
+                              }
+                            } else {
+                              window.alert('Geocoder failed due to: ' + status);
+                            }
+                          });
+                        });
+                    }
+                    else{
+                        clearInterval(animationInterval);
+                        $('#you_location_img').css('background-position', '0px 0px');
+                    }
+                });
+                
+                controlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+            }
+
+        
+    }
+
+       

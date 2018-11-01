@@ -22,9 +22,24 @@ app.use('/express-status', function (req, res, next) {
     res.json({ running: true });
 })
 
+
+// //Function to retrieve near Donations
+// app.use('/nearbyDonations', function (req, res, next) {
+//     //var db = require('loopback-connector-mysql');
+//     defaultLocation = new loopback.GeoPoint(-31,38);
+
+//         if(req.position.lat && req.position.lng){
+//             // req instanceOf GeoPoint 
+//             if (req.position.lat != null && req.position.lng != null) {
+//                 res.json(getNearDonations(req.position));
+//         } else { res.json(getNearDonations(defaultLocation)); }
+//        }  else { res.json(getNearDonations(defaultLocation))}
+
+// });
+
 //Load Jquery File Upload handler
 var upload = require('jquery-file-upload-middleware'),
-bodyParser = require('body-parser');
+    bodyParser = require('body-parser');
 
 // configure upload middleware
 upload.configure({
