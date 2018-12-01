@@ -1,4 +1,4 @@
-        // This example requires the Places library. Include the libraries=places
+        // This requires the Places library. Include the libraries=places
         // parameter when you first load the API. For example:
         // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
@@ -6,16 +6,33 @@
 
         function initMap() {
             var geocoder = new google.maps.Geocoder;
-            var map = new google.maps.Map(document.getElementById('map'), {
+             map = new google.maps.Map(document.getElementById('map'), {
                 // center: { lat: -33.8688, lng: 151.2195 },
                 zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
+            var image = {
+                url: '/assets/img/user.png',
+                // This marker is 20 pixels wide by 32 pixels high.
+                size: new google.maps.Size(50, 46),
+                // The origin for this image is (0, 0).
+                origin: new google.maps.Point(0, 0),
+                // The anchor for this image is the base of the flagpole at (0, 32).
+                anchor: new google.maps.Point(0, 32)
+              };
+
+              var shape = {
+                coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                type: 'poly'
+              };
+
             var marker = new google.maps.Marker({
                 map: map,
                 animation: google.maps.Animation.DROP,
                 anchorPoint: new google.maps.Point(0, -29),
+                icon: image,
+                shape: shape
             });
 
             var locationInput = document.getElementById("locationInput");
@@ -24,18 +41,25 @@
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = {
+                    window.pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
 
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent('You are here');
-                    infoWindow.open(map);
-                    map.setCenter(pos);
+                    // infoWindow.setPosition(pos);
+                    // infoWindow.setContent('You are here');
+                    // infoWindow.open(map);
+                   
+                            infowindow.close();
+                            marker.setPosition(pos);
+                            map.setCenter(pos);
+
+                    showNearbyDonations();
+                    
                 }, function () {
                     handleLocationError(true, infoWindow, map.getCenter());
                 });
+                addYourLocationButton(map,marker);
             } else {
                 // Browser doesn't support Geolocation
                 pos = {lat:-34.6037389 , lng:-58.3837591 }
@@ -55,7 +79,7 @@
                     'Error: The Geolocation service failed.' :
                     'Error: Your browser doesn\'t support geolocation.');
                 infoWindow.open(map);
-            }
+            }   
 
             
             var input = document.getElementById('pac-input');
@@ -81,6 +105,12 @@
 
             autocomplete.addListener('place_changed', function () {
     
+                let marker = new google.maps.Marker({
+                    map: map,
+                    animation: google.maps.Animation.DROP,
+                    anchorPoint: new google.maps.Point(0, -29),
+                });
+
                 infowindow.close();
                 marker.setVisible(false);
                 var place = autocomplete.getPlace();
@@ -99,7 +129,7 @@
                     map.fitBounds(place.geometry.viewport);
                 } else {
                     map.setCenter(place.geometry.location);
-                    map.setZoom(17); 
+                    map.setZoom(15); 
                 }
                  marker.setPosition(place.geometry.location);
                  marker.setVisible(true);
@@ -123,9 +153,9 @@
 
             });
 
-            addYourLocationButton(map,marker);
            
-            function addYourLocationButton(map) 
+           
+            function addYourLocationButton(map,marker) 
             {
                
                 var controlDiv = document.createElement('div');            
@@ -153,9 +183,15 @@
                 secondChild.style.backgroundRepeat = 'no-repeat';
                 secondChild.id = 'you_location_img';
                 firstChild.appendChild(secondChild);
+
+                
                 
                 google.maps.event.addListener(map, 'dragend', function() {
                     $('#you_location_img').css('background-position', '0px 0px');
+                });
+
+                google.maps.event.addListener(map, 'zoom_changed', function() {
+                    showNearbyDonations();
                 });
             
                 firstChild.addEventListener('click', function() {
@@ -170,7 +206,7 @@
                             latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                             //convertir geo a direccion, y reemplazar en address input
                             infowindow.close();
-                            //marker.setPosition(latlng);
+                            marker.setPosition(latlng);
                             map.setCenter(latlng);
                             clearInterval(animationInterval);
                             $('#you_location_img').css('background-position', '-144px 0px');
@@ -182,7 +218,13 @@
                               if (results[0]) {
 
                                 //fullfill address input when location button is clicked
-                                input.value = results[0].formatted_address;
+
+                                //AGREGAR CHEQUEO . QUE PASA SI NO HAY RESULTADOS?
+                                if (results[0]){
+                                    input.value = results[0].formatted_address;
+                                } else {
+                                    input.value = '';
+                                }
                                 locationInput.value =  JSON.stringify(latlng);
                                 input.scrollIntoView();
 
@@ -203,6 +245,10 @@
                 
                 controlDiv.index = 1;
                 map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+            }
+
+            function createUserMarker(){
+
             }
 
         
