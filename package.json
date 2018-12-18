@@ -11,18 +11,33 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
+    "bcrypt": "^3.0.2",
+    "blueimp-file-upload-node": "2.1.0",
     "compression": "^1.0.3",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.5.2",
-    "helmet": "^3.10.0",
+    "dotenv": "6.2.0",
+    "express-flash": "^0.0.2",
+    "express-react-views": "^0.11.0",
+    "express-session": "^1.15.6",
+    "helmet": "^3.15.0",
     "image-type": "^3.0.0",
     "jquery-file-upload-middleware": "^0.1.8",
     "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.2.0",
+    "loopback-component-passport": "^3.10.0",
     "loopback-connector-mysql": "^5.3.1",
+    "passport": "^0.2.0",
+    "passport-facebook": "^1.0.3",
+    "passport-google-oauth": "^0.1.5",
+    "passport-local": "^1.0.0",
+    "passport-oauth2": "^1.1.2",
+    "passport-twitter": "^1.0.2",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0",
-    "blueimp-file-upload-node": "2.1.0"
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "eslint": "^3.17.1",
@@ -33,5 +48,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "Travel light - Donate your stuff"
+  "description": "Travel lighter - Donate your stuff"
 }

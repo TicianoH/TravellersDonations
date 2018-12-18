@@ -8,7 +8,10 @@
   "properties": {
     "id": {
       "type": "number",
-      "required": true
+      "required": true,
+      "index": {
+        "unique": true
+      }
     },
     "categoryCode": {
       "type": "number",
@@ -38,10 +41,6 @@
       "type": "geopoint",
       "required": true
     },
-    "creationDate": {
-      "type": "date",
-      "required": false
-    },
     "saleDate": {
       "type": "date",
       "required": false
@@ -55,12 +54,40 @@
       "required": false
     },
     "files": {
-      "type":"array"
+      "type": "array"
     }
-
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+  "relations": {
+  
+     "person": {
+       "type": "belongsTo",
+       "model": "person",
+       "foreignKey": "ownerId"
+     }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "mixins": {
+    "Timestamp":{},
+    "Userdata":{
+      
+    }
+    
+  },
+  "methods": {
+  }
 }
+

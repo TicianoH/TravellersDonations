@@ -1,0 +1,58 @@
+{
+  "name": "person",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "dateCreated": {
+      "type": "date",
+      "required": true
+    },
+    "dateLastLogin": {
+      "type": "date"
+    },
+    "karma": {
+      "type": "number",
+      "required": true
+    },
+    "donationsGiven": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "donationsTaken": {
+      "type": "number",
+      "default": 0
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+   
+    "donationItems": {
+      "type":"hasMany",
+      "model":"donationItem",
+      "foreignKey": "ownerId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

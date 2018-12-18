@@ -8,8 +8,8 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" href="assets/css/jquery.fileupload.css">
-  <link rel="stylesheet" href="assets/css/jquery.fileupload-ui.css">
+  <link rel="stylesheet" href="/css/jquery.fileupload.css">
+  <link rel="stylesheet" href="/assets/css/jquery.fileupload-ui.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
@@ -26,9 +26,9 @@
 
   <!-- CSS adjustments for browsers with JavaScript disabled -->
   <noscript>
-    <link rel="stylesheet" href="assets/css/jquery.fileupload-noscript.css"></noscript>
+    <link rel="stylesheet" href="/assets/css/jquery.fileupload-noscript.css"></noscript>
   <noscript>
-    <link rel="stylesheet" href="assets/css/jquery.fileupload-ui-noscript.css"></noscript>
+    <link rel="stylesheet" href="/assets/css/jquery.fileupload-ui-noscript.css"></noscript>
 </head>
 
 <body>
@@ -36,31 +36,32 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGyddcahVezWHIm7qcfIu_H8emXH-U-zM&libraries=places&callback=initMap"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"></script> -->
-  <script src="assets/js/functions.js"></script>
-  <script src="assets/js/init.js"></script>
+  <script src="/assets/js/functions.js"></script>
+  <script src="/assets/js/init.js"></script>
   <!-- <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script> -->
-  <script src="assets/js/material.min.js"></script>
-  <script src="assets/js/vendor/jquery.ui.widget.js"></script>
-  <script src="assets/js/jquery.iframe-transport.js"></script>
-  <script src="assets/js/jquery.fileupload.js"></script>
+  <script src="/assets/js/material.min.js"></script>
+  <script src="/assets/js/vendor/jquery.ui.widget.js"></script>
+  <script src="/assets/js/jquery.iframe-transport.js"></script>
+  <script src="/assets/js/jquery.fileupload.js"></script>
   <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
   <!-- <script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script> -->
   <!-- The Canvas to Blob plugin is included for image resizing functionality -->
   <!-- <script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script> -->
   <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
   <!-- The File Upload processing plugin -->
-  <script src="assets/js/jquery.fileupload-process.js"></script>
+  <script src="/assets/js/jquery.fileupload-process.js"></script>
   <!-- The File Upload image preview & resize plugin -->
-  <script src="assets/js/jquery.fileupload-image.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script src="/assets/js/jquery.fileupload-image.js"></script>
+  <script src="/assets/js/script.js"></script>
 
   <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/bg3.jpg')">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand text-center">
-            <h1>Give & Take.</h1>
-            <h3 class="title text-center"> That's what's all about.</h3>
+            h1 Give & Take.
+            h3 That's what's all about
+            h1 Welcome #{user}!
           </div>
         </div>
       </div>
@@ -74,8 +75,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
-              <button id="newDonation" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="slideForm()"
-                style="align-content:stretch">
+              <button id="newDonation" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="slideForm()" style="align-content:stretch">
                 <i class="material-icons">add</i>
               </button>
 
@@ -91,41 +91,29 @@
 
                 <div class="mdl-card__supporting-text">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input name="userName" id="userName" class="mdl-textfield__input" type="text" required autocomplete="on"
-                      form="newDonationForm">
+                    <input name="userName" id="userName" class="mdl-textfield__input" type="text" required autocomplete="on" form="newDonationForm">
                     <label class="mdl-textfield__label" for="donationUser">Your Name</label>
                   </div>
 
-                  <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input name="email" id="email" class="mdl-textfield__input" type="email" required autocomplete="on"
-                form="newDonationForm">
-              <label class="mdl-textfield__label" for="donationEmail">Your Email</label>
-            </div> -->
-
+    
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input name="donationName" id="donationName" class="mdl-textfield__input" type="text" required form="newDonationForm">
                     <label class="mdl-textfield__label" for="donationName">Name of the object to donate</label>
                   </div>
 
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <textarea name="description" id="description" class="mdl-textfield__input" rows="6" cols="45"
-                      maxlength="800" minlength="50" required form="newDonationForm"></textarea>
+                    <textarea name="description" id="description" class="mdl-textfield__input" rows="6" cols="45"  maxlength="800" minlength="50" required form="newDonationForm"></textarea>
                     <label class="mdl-textfield__label" for="donationDesc">Description</label>
                   </div>
 
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <textarea name="locationInfo" class="mdl-textfield__input" id="placeInfo" rows="4" maxlength="800"
-                      minlength="50" required form="newDonationForm"></textarea>
-                    <label class="mdl-textfield__label" for="username">Include details about the place and the person
-                      holding the donation</label>
+                    <textarea name="locationInfo" class="mdl-textfield__input" id="placeInfo" rows="4" maxlength="800"minlength="50" required form="newDonationForm"></textarea>
+                    <label class="mdl-textfield__label" for="username">Include details about the place and the person holding the donation</label>
                   </div>
 
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input name="address" id="pac-input" class="mdl-textfield__input" type="street-address" required
-                      form="newDonationForm">
-                    <label class="mdl-textfield__label" for="donationDesc">Exact Address wher donation will be
-                      available
-                      for pickup</label>
+                    <input name="address" id="pac-input" class="mdl-textfield__input" type="street-address" required  form="newDonationForm">
+                    <label class="mdl-textfield__label" for="donationDesc">Exact Address wher donation will be available for pickup</label>
                   </div>
                   <input type="text" id="locationInput" name="location" hidden required form="newDonationForm">
                   <input type="text" name="files" id="inputFiles" required form="newDonationForm" hid den>
@@ -146,9 +134,7 @@
                   </form>
 
                   <div class="mdl-card__actions mdl-card--border">
-                    <button id="submitForm" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-snackbar__action"
-                      onclick="submitNewDonation()" form="newDonationForm">Add
-                      Donation</button>
+                    <button id="submitForm" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-snackbar__action" onclick="submitNewDonation()" form="newDonationForm">Add Donation</button>
                     <div class="mdl-layout-spacer"></div>
                     <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
                     <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
@@ -193,19 +179,11 @@
       <nav class="float-left">
         <ul>
           <li>
-            <a href="https://www.creative-tim.com/">
-              Julian Mojico
+            <a href="https://www.creative-tim.com/"> Julian Mojico
             </a>
           </li>
         </ul>
       </nav>
-      <div class="copyright float-right">
-        &copy;
-        <script>
-          document.write(new Date().getFullYear())
-        </script>, made with <i class="material-icons">favorite</i> by
-        <a href="https://www.travellers-donations.com/" target="blank">Agilisys</a> for a better web.
-      </div>
     </div>
   </footer>
 </body>

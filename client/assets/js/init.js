@@ -193,6 +193,10 @@
                 google.maps.event.addListener(map, 'zoom_changed', function() {
                     showNearbyDonations();
                 });
+
+                google.maps.event.addListener(map, 'mouseover', function() {
+                   //change icon cursor;
+                });
             
                 firstChild.addEventListener('click', function() {
                     var imgX = '0';

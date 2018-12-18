@@ -2,14 +2,13 @@
 $(document).ready(function () {
     
     fullfillForm();
-    
 });
 
 function displayMarkers(data,textStatus,jqXHR) {
-            
+   
+if (data.length) {
     for(i=0;i<data.results.length;i++){
 
-        test=3;
         let donation = data.results[i];
         console.log("Nearby donation found: "+donation.name+"\n"+"location: "+donation.location.lat+","+donation.location.lng);
         marker = new google.maps.Marker({
@@ -19,7 +18,13 @@ function displayMarkers(data,textStatus,jqXHR) {
             animation: google.maps.Animation.DROP,
         });
         
-    }   
+        }
+    } else {
+
+        //MOSTRAR MENSAJE QUE NO HAY DONACIONES AL USUARIO.
+        console.log("No donations found nearby, adding sample donation");
+        addSampleDonation();
+    }
 }
 
 function showNearbyDonations(){
@@ -43,14 +48,6 @@ function showNearbyDonations(){
         },// "{geoposition:",
         dataType: "json",
         success: displayMarkers,
-        error: function() {},
-        // statusCode: {
-        //     404: function() {
-        //       alert( "page not found" );
-        //     },
-        //     500: function() {
-        //         alert( "500 server error" );
-        //       }},
         timeout: 5000
     });
 
@@ -81,21 +78,12 @@ function fixKmAccordingZoom(){
             addDonationCard.setAttribute("style", "visibility: hidden; display:none");
         }
     }
-
    
     function submitNewDonation() {
 
-        //chequear que todos los campos esten llenos, incluso imagenes.
-
-
-        
+        //chequear que todos los campos esten llenos, incluso imagenes. 
         $('#inputFiles').val(JSON.stringify(window.uploadedFiles));
-        //var formData = $('#newDonationForm').serializeArray();
-
-        
-
         submitForm(document.getElementById('newDonationForm'), function (){showSnackBar('lightgreen',"Donation succesfully submitted")} ,function () {showSnackBar("red","Donation submission failed. Please try again later")});
-
         event.preventDefault();
     }
 
@@ -119,34 +107,50 @@ function fixKmAccordingZoom(){
 
     }
 
-    function toBuffer(ab) {
-        var buf = new Buffer(ab.byteLength);
-        var view = new Uint8Array(ab);
-        for (var i = 0; i < buf.length; ++i) {
-            buf[i] = view[i];
-        }
-        return buf;
-    }
-
-    function toArrayBuffer(buf) {
-        var ab = new ArrayBuffer(buf.length);
-        var view = new Uint8Array(ab);
-        for (var i = 0; i < buf.length; ++i) {
-            view[i] = buf[i];
-        }
-        return ab;
-    }
-
     function fullfillForm() {
 
         document.getElementById("userName").value = "jmojico";
-        document.getElementById("email").value = "jmojico@gmail.com";
+        // document.getElementById("email").value = "jmojico@gmail.com";
         document.getElementById("donationName").value = "Carpa";
         document.getElementById("description").value = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         document.getElementById("placeInfo").value = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         document.getElementById("pac-input").value = "Direccion 123 Reloca";
         
 
+    }
+
+    function addSampleDonation(){
+
+        // var sampleDonation = {
+        //     userName: "Juan",
+        //     donationName: "Carpa de Camping",
+        //     description: "Esta es una preciosa carpa de camping para 4 personas, tiene algun tiempo de uso pero esta en buen estado. Como observaciones, faltan 3 estacas",
+        //     locationInfo: "La direccion de ubicacion corresponde a mi casa, es un edificio y vivo en el departamento 7-C",
+        //     address: "Pedernera 2295, B1607APG Villa Adelina, Buenos Aires, Argentina",
+        //     location: { lat:window.pos.lat+0.01, lng:window.pos.lng+0.01 },
+        //     files: "[sampleDonation.jpg]"
+        // }
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: "/api/donationItems",
+        //     data: JSON.stringify(sampleDonation),
+        //     dataType: "json",
+        //     contentType: 'application/json',
+        //     success: function() {
+            
+        //     },
+        //     timeout: 5000
+        // });
+
+        marker = new google.maps.Marker({
+            map: map,
+            position:  { lat:window.pos.lat+0.004, lng:window.pos.lng+0.005 },
+            title: "Sample Donation",
+            animation: google.maps.Animation.DROP,
+        });
+
+        //Mostrar datos de donacion de ejemplo en el panel correspondiente.
     }
 
     function submitForm(form, successFn, errorFn) {

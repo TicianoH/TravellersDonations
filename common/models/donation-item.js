@@ -1,5 +1,7 @@
 'use strict';
 var loopback = require('loopback');
+
+
 module.exports = function (Donationitem) {
 
     //https://loopback.io/doc/en/lb2/Where-filter.html#near
@@ -23,6 +25,7 @@ module.exports = function (Donationitem) {
             callback(null, dbresult);
             console.info(dbresult);
         });
+
     };
 
 Donationitem.remoteMethod('nearbydonationsFunc', {

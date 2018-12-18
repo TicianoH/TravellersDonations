@@ -4,7 +4,8 @@
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
-      "./models"
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -14,7 +15,8 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "travellersDonationsdb",
+    "public": true
   },
   "AccessToken": {
     "dataSource": "db",
@@ -39,7 +41,15 @@
     "dataSource": null
   },
   "donationItem": {
-    "dataSource": "items",
+    "dataSource": "travellersDonationsdb",
+    "public": true
+  },
+  "UserCredential": {
+    "dataSource": "db",
+    "public": true
+  },
+  "UserIdentity": {
+    "dataSource": "db",
     "public": true
   }
 }
