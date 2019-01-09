@@ -2,5 +2,11 @@
   "loopback-component-explorer": {
     "mountPath": "/explorer",
     "generateOperationScopedModels": true
+  },
+  "loopback-component-oauth2": {
+    "dataSource": "travellersDonationsdb",
+    "loginPage": "/login",
+    "loginPath": "/login",
+    "addHttpHeaders": "X-"
   }
 }

@@ -8,7 +8,7 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" href="/css/jquery.fileupload.css">
+  <link rel="stylesheet" href="/assets/css/jquery.fileupload.css">
   <link rel="stylesheet" href="/assets/css/jquery.fileupload-ui.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 
 
-  <link rel="stylesheet" href="assets/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="/assets/css/blueimp-gallery.min.css">
   <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 
   <!-- CSS adjustments for browsers with JavaScript disabled -->
@@ -34,10 +34,9 @@
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGyddcahVezWHIm7qcfIu_H8emXH-U-zM&libraries=places&callback=initMap"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"></script> -->
-  <script src="/assets/js/functions.js"></script>
-  <script src="/assets/js/init.js"></script>
+  script(async defer src="https://maps.googleapis.com/maps/api/js?key="+GOOGLE_API+"&libraries=places&callback=initMap")
+  script(type="text/javascript" src="/assets/js/functions.js")
+  script(type="text/javascript" src="/assets/js/init.js")
   <!-- <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script> -->
   <script src="/assets/js/material.min.js"></script>
   <script src="/assets/js/vendor/jquery.ui.widget.js"></script>

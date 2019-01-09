@@ -31,7 +31,8 @@ var upload = require('jquery-file-upload-middleware'),
 var flash = require('express-flash');
 
 //load enviroment variables
-require('dotenv').config();
+//require('dotenv').config();
+require('dotenv').load();
 
 
 app.use(helmet());
@@ -69,8 +70,8 @@ app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
 
 // Setup the view engine (jade)
 var path = require('path');
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.

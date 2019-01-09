@@ -49,7 +49,7 @@
     "public": true
   },
   "UserIdentity": {
-    "dataSource": "db",
-    "public": true
+    "dataSource": "travellersDonationsdb",
+    "public": false
   }
 }

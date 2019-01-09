@@ -3,7 +3,7 @@
     "name": "db",
     "connector": "memory"
   },
-  "travellersDonationsdb": {
+  "mysqldb": {
     "host": "localhost",
     "port": 3306,
     "url": "mysql://webapp:qwe123asd@localhost:3306/travellersdonations",
@@ -12,5 +12,13 @@
     "name": "travellersDonationsdb",
     "user": "webapp",
     "connector": "mysql"
+  },
+  "travellersDonationsdb": {
+    "host": "localhost",
+    "port": 27017,
+    "url":  "",
+    "database": "travellersDonations",
+    "authSource" : "admin",
+    "connector": "mongodb"
   }
 }
